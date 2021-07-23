@@ -17,8 +17,8 @@ class CreateRepliesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('detail')->nullable(false);
-            $table->bigInteger('parent_comment_id')->unsigned()->nullable(false);
-            $table->bigInteger('parent_feedback_id')->unsigned()->nullable(false);
+            $table->bigInteger('comment_id')->unsigned()->nullable(false);
+            $table->bigInteger('feedback_id')->unsigned()->nullable(false);
             $table->bigInteger('user_id')->unsigned();
         });
     }

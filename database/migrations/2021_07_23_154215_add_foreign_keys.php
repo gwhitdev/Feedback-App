@@ -15,12 +15,12 @@ class AddForeignKeys extends Migration
     {
         Schema::table('comments', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('parent_feedback_id')->references('id')->on('feedback')->onDelete('cascade');
+            $table->foreign('feedback_id')->references('id')->on('feedback')->onDelete('cascade');
         });
         Schema::table('replies', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('parent_comment_id')->references('id')->on('comments')->onDelete('cascade');
-            $table->foreign('parent_feedback_id')->references('id')->on('feedback')->onDelete('cascade');
+            $table->foreign('comment_id')->references('id')->on('comments')->onDelete('cascade');
+            $table->foreign('feedback_id')->references('id')->on('feedback')->onDelete('cascade');
         });
         Schema::table('feedback', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

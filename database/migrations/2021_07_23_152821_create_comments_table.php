@@ -18,7 +18,7 @@ class CreateCommentsTable extends Migration
             $table->timestamps();
             $table->string('detail',255);
             $table->boolean('removed')->default(false);
-            $table->bigInteger('parent_feedback_id')->unsigned();
+            $table->bigInteger('feedback_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
         });
     }
