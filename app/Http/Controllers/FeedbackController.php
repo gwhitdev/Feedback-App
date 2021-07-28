@@ -10,4 +10,8 @@ class FeedbackController extends Controller
     {
         return view('feedback/index');
     }
+    public function new(Request $request)
+    {
+        return view('feedback/new');
+    }
 }

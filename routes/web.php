@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FeedbackController;
+use App\Models\Feedback;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,3 +24,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/feedback', [FeedbackController::class, 'index'])->middleware('auth');
+Route::get('/feedback/new', [FeedbackController::class, 'new'])->middleware('auth');
+Route::get('/feedback/{feedback_id}',[FeedbackController::class,'detail'])->middleware('auth');
+

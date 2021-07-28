@@ -15,6 +15,10 @@ module.exports = {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
         },
+        backgroundImage: theme => ({
+            'header-image': "url('/storage/imgages/desktop/background-header.png')",
+            'empty-image': "url('/storage/images/desktop/illustration-empty.svg')",
+          }),
     },
 
     variants: {

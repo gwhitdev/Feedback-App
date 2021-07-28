@@ -15,39 +15,48 @@ class FeedbackIndex extends Component
     protected $listeners = [
         'feedbackCreated' => 'getNewFeedback',
         'setCategory' => 'setCategory',
-        'sort' => 'sort'
+        'sort' => 'sort',
+        'showAll' => 'showAll'
     ];
 
+    public function showAll()
+    {
+        $this->chosen_category = null;
+        $this->feedback = $this->getBaseFeedback()->get();
+    }
+    public function getBaseFeedback()
+    {
+        return Feedback::where('removed',false);
+    }
     public function sort($details)
     {
-        if($details[0] == 'votes' && $this->chosen_category == !null) return $this->sortByVotes($details[1]);
-        if($details[0] == 'comments' && $this->chosen_category != null) return $this->sortByComments($details[1]);
-        $this->feedback = Feedback::where('removed',false)->get();
+        if($this->chosen_category != null) return $this->sortByCategory($details);
+        if($this->chosen_category == null) return $this->sortByNullCategory($details);
+        $this->getNewFeedback();
+    }
+    public function sortByNullCategory($details)
+    {
+        $feedback = $this->getBaseFeedback();
+        $this->feedback = $feedback->reorder($details[0],$details[1])->get();
+    }
+    public function sortByCategory($details)
+    {
+        $feedback = $this->getBaseFeedback();
+        $this->feedback = $feedback->where('category_id',$this->chosen_category)->reorder($details[0],$details[1])->get();
     }
     public function setCategory($category_id)
     {
         $this->chosen_category = $category_id;   
         return $this->updateFeedbackWithCategory($category_id);
     }
-
     public function updateFeedbackWithCategory($cat)
     {
         $this->feedback = Feedback::where('removed',false)->where('category_id',$cat)->get();
-    }
-
-    public function sortByVotes($direction)
-    {
-        $this->feedback = Feedback::where('removed',false)->where('category_id',$this->chosen_category)->reorder('votes',$direction)->get();
-    }
-    public function sortByComments($direction)
-    {
-        $this->feedback = Feedback::where('removed',false)->where('category_id',$this->chosen_category)->reorder('count_comments',$direction)->get();
     }
     public function getNewFeedback()
     {
         return $this->feedback = Feedback::where('removed',false)->get();
     }
-    
     public function mount()
     {
         $this->feedback = Feedback::where('removed',false)->get();
