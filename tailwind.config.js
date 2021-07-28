@@ -16,9 +16,13 @@ module.exports = {
             },
         },
         backgroundImage: theme => ({
-            'header-image': "url('/storage/imgages/desktop/background-header.png')",
+            'headerImage': "url('/storage/images/desktop/background-header.png')",
             'empty-image': "url('/storage/images/desktop/illustration-empty.svg')",
           }),
+        backgroundColor: theme => ({
+            ...theme('colors'),
+                'feedbackButton': '#AD1FEA'
+            })
     },
 
     variants: {

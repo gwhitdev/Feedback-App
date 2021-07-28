@@ -21,7 +21,7 @@
     <body class="font-sans antialiased bg-blue-50">
         <x-jet-banner />
 
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen ">
             
 
             <!-- Page Heading -->
