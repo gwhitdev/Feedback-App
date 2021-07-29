@@ -11,9 +11,7 @@
     </div>
     <div class="grid md:grid-cols-4 md:grid-rows-6 bg-blue-50 col-span-3">
         <div class="row-start-1 col-span-4">
-            <div class="w-auto mt-3  h-[82px] rounded-xl bg-topBar">
-                <livewire:generic.sort-buttons />
-            </div>
+            <livewire:feedback.feedback-menu :count="$count"/>
         </div>
         <div class="rounded-xl row-start-2 row-span-4 col-span-4 grid bg-white lg:grid-rows-8 grid-cols-1 lg:h-full w-full">
             @if($feedback->count() > 0)
@@ -23,6 +21,7 @@
                             <li>{{ $f->title }} Votes:{{$f->votes}} Comments:{{$f->count_comments}} Category: {{$f->category->name}}</li>
                         @endforeach
                     </ul>
+                    
                 </div>
             @else
                 

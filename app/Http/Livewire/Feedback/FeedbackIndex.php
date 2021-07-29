@@ -11,6 +11,7 @@ class FeedbackIndex extends Component
     public $feedback;
     public $categories;
     public $chosen_category;
+    public $count;
 
     protected $listeners = [
         'feedbackCreated' => 'getNewFeedback',
@@ -18,7 +19,11 @@ class FeedbackIndex extends Component
         'sort' => 'sort',
         'showAll' => 'showAll'
     ];
-    
+
+    public function emitCounted()
+    {
+        $this->emit('counted',$this->feedback->count());
+    }
     public function getBaseFeedback()
     {
         return Feedback::where('removed',false);
@@ -27,6 +32,7 @@ class FeedbackIndex extends Component
     {
         $this->chosen_category = null;
         $this->feedback = $this->getBaseFeedback()->reorder('votes','desc')->get();
+        $this->emitCounted();
     }
     public function sort($details)
     {
@@ -36,7 +42,7 @@ class FeedbackIndex extends Component
     }
     public function sortByNullCategory($details)
     {
-        $this->feedback = $this->getBaseFeedback()->reorder($details[0],$details[1])->get();
+        $this->feedback = $this->getBaseFeedback()->reorder($details[0],$details[1])->get(); 
     }
     public function sortByCategory($details)
     {
@@ -44,14 +50,17 @@ class FeedbackIndex extends Component
     }
     public function setCategory($category_id)
     {
-        $this->chosen_category = $category_id;   
-        return $this->updateFeedbackWithCategory($category_id);
+        $this->chosen_category = $category_id; 
+        $this->updateFeedbackWithCategory($category_id);
+        $this->emitCounted();
     }
+    
     public function updateFeedbackWithCategory($cat)
     {
         $this->feedback = Feedback::where('removed',false)->where('category_id',$cat)->reorder('votes','desc')->get();
         $this->emit('changedCategory');
     }
+    
     public function mount()
     {
         $this->feedback = $this->getBaseFeedback()->reorder('votes','desc')->get();
@@ -62,6 +71,7 @@ class FeedbackIndex extends Component
             if($c->feedback()->count() > 0) array_push($categories, $c);
         }
         $this->categories = $categories;
+        $this->count = $this->feedback->count();
     }
     public function render()
     {
