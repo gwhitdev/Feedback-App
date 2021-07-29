@@ -25,5 +25,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('/feedback', [FeedbackController::class, 'index'])->middleware('auth');
 Route::get('/feedback/new', [FeedbackController::class, 'new'])->middleware('auth');
+Route::get('/feedback/test',[FeedbackController::class, 'test'])->middleware('auth');
 Route::get('/feedback/{feedback_id}',[FeedbackController::class,'detail'])->middleware('auth');
 

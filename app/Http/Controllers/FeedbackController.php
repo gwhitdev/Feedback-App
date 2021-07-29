@@ -14,4 +14,8 @@ class FeedbackController extends Controller
     {
         return view('feedback/new');
     }
+    public function test()
+    {
+        return view('feedback/test');
+    }
 }

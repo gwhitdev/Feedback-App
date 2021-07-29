@@ -2,8 +2,8 @@
     @error('status') {{$message}} @enderror
     
     @error('user_id') {{$message}} @enderror
-    <form wire:submit.prevent="create"method="POST">
-         {{ csrf_field() }}
+    <form wire:submit.prevent="create">
+         
         <label for="title">Feedback Title</label>
         <input type="text" name="title"wire:model='title' >@error('title'){{$message}}@enderror
         <label for="category">Category</label>
@@ -17,6 +17,6 @@
         <label for="detail">Feedback Detail</label>
         <input type="text" name="detail" wire:model='detail'>@error('detail'){{$message}}@enderror
        
-        <button type="submit">Save</button>
+        <button>Save</button>
     </form>
 </div>

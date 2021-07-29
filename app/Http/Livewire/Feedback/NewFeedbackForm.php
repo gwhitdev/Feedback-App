@@ -5,6 +5,8 @@ namespace App\Http\Livewire\Feedback;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use App\Models\Feedback;
+use App\Models\Category;
+use Exception;
 
 class NewFeedbackForm extends Component
 {
@@ -31,12 +33,21 @@ class NewFeedbackForm extends Component
         $f->status_id = $this->status_id;
         $f->category_id = $this->category_id;
         $f->user_id = auth()->user()->id;
-        $f->save();
-        $this->emit('feedbackCreated');
+        try
+        {
+            $f->save();
+        }
+        catch (Exception $e)
+        {
+            dd($e->getMessage());
+        }
+        
+        return redirect('/feedback');
     }
-    public function mount($categories)
+    
+    public function mount()
     {
-        $this->categories = $categories;
+        $this->categories = Category::all();
     }
     public function render()
     {

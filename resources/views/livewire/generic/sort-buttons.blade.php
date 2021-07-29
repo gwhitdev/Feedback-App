@@ -1,7 +1,16 @@
 <div>
-    <button wire:click="sort(['count_comments','asc'])">Sort by comment ASC</button>
-    <button wire:click="sort(['count_comments','desc'])">Sort by comment DESC</button>
-
-    <button wire:click="sort(['votes','asc'])">Sort by votes ASC</button>
-    <button wire:click="sort(['votes','desc'])">Sort by votes DESC</button>
+    
+   <x-jet-dropdown :align="'left'">
+       <x-slot name="trigger">
+           {{ $chosen }}
+       </x-slot>
+       <x-slot name="content">
+           <ul>
+               <li wire:click="sortByVotes('desc')">Most votes</li>
+               <li wire:click="sortByVotes('asc')">Least votes</li>
+               <li wire:click="sortByComments('desc')">Most comments</li>
+               <li wire:click="sortByComments('asc')">Least comments</li>
+           </ul>
+       </x-slot>
+   </x-jet-dropdown>
 </div>

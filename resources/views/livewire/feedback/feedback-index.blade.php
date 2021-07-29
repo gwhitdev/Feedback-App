@@ -1,5 +1,5 @@
 <div class="grid gap-3 w-screen md:w-[689px] lg:w-full mt-3 grid-cols-1 grid-rows-4 md:grid-rows-4 md:grid-cols-1 lg:grid-cols-4 lg:grid-rows-1 bg-blue-50 h-full">
-    <div class="flex md:gap-[10px] lg:gap-5 md:flex-row lg:flex-col justify-start mx-auto bg-blue-50 col-span-1">
+    <div class="flex md:gap-[10px] lg:mt-3 lg:gap-5 md:flex-row lg:flex-col justify-start mx-auto bg-blue-50 col-span-1">
         <div class="flex bg-headerImage bg-cover h-[72px] w-[375px] md:w-[223px] md:h-[178px] lg:w-[255px] lg:h-[137px] rounded-xl">
             Frontend Mentor
         </div>
@@ -10,8 +10,8 @@
         </div>
     </div>
     <div class="grid md:grid-cols-4 md:grid-rows-6 bg-blue-50 col-span-3">
-        <div class="row-start-1 col-span-4 bg-blue-50">
-            <div class="w-auto mt-3 ml-3 mr-3 h-[82px] rounded-xl bg-purple-500">
+        <div class="row-start-1 col-span-4">
+            <div class="w-auto mt-3  h-[82px] rounded-xl bg-topBar">
                 <livewire:generic.sort-buttons />
             </div>
         </div>
@@ -43,6 +43,7 @@
                 
                 @endif
             </div>
+            
         </div>
 
         

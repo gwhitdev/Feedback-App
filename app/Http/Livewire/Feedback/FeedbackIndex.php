@@ -59,7 +59,7 @@ class FeedbackIndex extends Component
     }
     public function mount()
     {
-        $this->feedback = Feedback::where('removed',false)->get();
+        $this->feedback = $this->getBaseFeedback()->reorder('votes','desc')->get();
         $cats = Category::all();
         $categories = [];
         foreach($cats as $c)

@@ -21,7 +21,8 @@ module.exports = {
           }),
         backgroundColor: theme => ({
             ...theme('colors'),
-                'feedbackButton': '#AD1FEA'
+                'feedbackButton': '#AD1FEA',
+                'topBar': '#373F68',
             })
     },
 
