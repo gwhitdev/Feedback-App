@@ -18,31 +18,29 @@ class FeedbackIndex extends Component
         'sort' => 'sort',
         'showAll' => 'showAll'
     ];
-
-    public function showAll()
-    {
-        $this->chosen_category = null;
-        $this->feedback = $this->getBaseFeedback()->get();
-    }
+    
     public function getBaseFeedback()
     {
         return Feedback::where('removed',false);
+    }
+    public function showAll()
+    {
+        $this->chosen_category = null;
+        $this->feedback = $this->getBaseFeedback()->reorder('votes','desc')->get();
     }
     public function sort($details)
     {
         if($this->chosen_category != null) return $this->sortByCategory($details);
         if($this->chosen_category == null) return $this->sortByNullCategory($details);
-        $this->getNewFeedback();
+        $this->getBaseFeedback()->reorder('votes','desc')->get();
     }
     public function sortByNullCategory($details)
     {
-        $feedback = $this->getBaseFeedback();
-        $this->feedback = $feedback->reorder($details[0],$details[1])->get();
+        $this->feedback = $this->getBaseFeedback()->reorder($details[0],$details[1])->get();
     }
     public function sortByCategory($details)
     {
-        $feedback = $this->getBaseFeedback();
-        $this->feedback = $feedback->where('category_id',$this->chosen_category)->reorder($details[0],$details[1])->get();
+        $this->feedback = $this->getBaseFeedback()->where('category_id',$this->chosen_category)->reorder($details[0],$details[1])->get();
     }
     public function setCategory($category_id)
     {
@@ -51,11 +49,8 @@ class FeedbackIndex extends Component
     }
     public function updateFeedbackWithCategory($cat)
     {
-        $this->feedback = Feedback::where('removed',false)->where('category_id',$cat)->get();
-    }
-    public function getNewFeedback()
-    {
-        return $this->feedback = Feedback::where('removed',false)->get();
+        $this->feedback = Feedback::where('removed',false)->where('category_id',$cat)->reorder('votes','desc')->get();
+        $this->emit('changedCategory');
     }
     public function mount()
     {

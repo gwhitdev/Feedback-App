@@ -8,17 +8,24 @@ class SortButtons extends Component
 {
     public $chosen;
 
+    protected $listeners = [
+        'changedCategory' => 'changedCategory'
+    ];
     protected $toSortBy = [
         'votes' => [
-            'asc' => 'Most Votes',
-            'desc' => 'Least Votes'
+            'desc' => 'Most Votes',
+            'asc' => 'Least Votes'
         ],
         'comments' => [
-            'asc' => 'Most Comments',
-            'desc' => 'Least Comments'
+            'desc' => 'Most Comments',
+            'asc' => 'Least Comments'
         ]
     ];
 
+    public function changedCategory()
+    {
+        $this->sortByVotes('desc');
+    }
     public function changeSortDisplayDropdown($option,$direction)
     {
         $this->chosen = $this->toSortBy[$option][$direction];
@@ -31,7 +38,7 @@ class SortButtons extends Component
     public function sortByComments($direction)
     {
         $this->changeSortDisplayDropdown('comments',$direction);
-        $this->emit('sort',['comments',$direction]);
+        $this->emit('sort',['count_comments',$direction]);
     }
     public function mount()
     {
