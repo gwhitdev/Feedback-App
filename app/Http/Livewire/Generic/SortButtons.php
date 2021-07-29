@@ -9,7 +9,8 @@ class SortButtons extends Component
     public $chosen;
 
     protected $listeners = [
-        'changedCategory' => 'changedCategory'
+        'changedCategory' => 'changedCategory',
+        'showAll' => 'changedCategory',
     ];
     protected $toSortBy = [
         'votes' => [
