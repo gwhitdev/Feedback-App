@@ -1,6 +1,6 @@
    <x-jet-dropdown :align="'left'">
        <x-slot name="trigger">
-           Sort by: <span class="cursor-pointer">{{ $chosen }}</span>
+           Sort by : <span class="cursor-pointer">{{ $chosen }}</span> 
        </x-slot>
        <x-slot name="content">
            <ul class="divide-y text-black divide-gray-300 cursor-pointer ">

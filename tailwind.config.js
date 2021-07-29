@@ -13,8 +13,14 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                jost: ['Jost']
+            },
+            textColor: {
+                'purpleText': '#4661E6',
+                
             },
         },
+        
         backgroundImage: theme => ({
             'headerImage': "url('/storage/images/desktop/background-header.png')",
             'empty-image': "url('/storage/images/desktop/illustration-empty.svg')",
@@ -23,6 +29,9 @@ module.exports = {
             ...theme('colors'),
                 'feedbackButton': '#AD1FEA',
                 'topBar': '#373F68',
+                'categoryButton': '#F2F4FF',
+                'hoverButton': '#CFD7FF',
+                'activeButton': '#4661E6',
             })
     },
 

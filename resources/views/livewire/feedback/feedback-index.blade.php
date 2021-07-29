@@ -1,9 +1,12 @@
 <div class="grid gap-3 w-screen md:w-[689px] lg:w-full mt-3 grid-cols-1 grid-rows-4 md:grid-rows-4 md:grid-cols-1 lg:grid-cols-4 lg:grid-rows-1 bg-blue-50 h-full">
     <div class="flex md:gap-[10px] lg:mt-3 lg:gap-5 md:flex-row lg:flex-col justify-start mx-auto bg-blue-50 col-span-1">
-        <div class="flex bg-headerImage bg-cover h-[72px] w-[375px] md:w-[223px] md:h-[178px] lg:w-[255px] lg:h-[137px] rounded-xl">
-            Frontend Mentor
+        <div class="flex flex-col-reverse p-5 bg-headerImage bg-cover h-[72px] w-[375px] md:w-[223px] md:h-[178px] lg:w-[255px] lg:h-[137px] rounded-xl">
+            <div class="text-white">
+                <span class="font-bold text-xl">Frontend Mentor</span><br>
+                <span>Feedback Board</span>
+            </div>
         </div>
-        <div class="bg-white md:w-[223px] md:h-[178px] lg:w-[255px] lg:h-[166px] rounded-xl">
+        <div class="bg-white  md:w-[223px] md:h-[178px] lg:w-[255px] lg:h-[166px] rounded-xl">
             <livewire:generic.category-button :categories="$categories" />
         </div>
         <div class="bg-white rounded-xl md:h-[178px] md:w-[223px] lg:w-[255px] lg:h-[178px]">
