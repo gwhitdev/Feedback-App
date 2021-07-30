@@ -1112,6 +1112,12 @@ select {
 .top-0 {
 	top: 0px;
 }
+.top-\[72px\] {
+	top: 72px;
+}
+.top-\[80px\] {
+	top: 80px;
+}
 .z-0 {
 	z-index: 0;
 }
@@ -1407,6 +1413,9 @@ select {
 .w-\[8px\] {
 	width: 8px;
 }
+.w-1\/2 {
+	width: 50%;
+}
 .min-w-0 {
 	min-width: 0px;
 }
@@ -1508,6 +1517,9 @@ select {
 .grid-rows-6 {
 	grid-template-rows: repeat(6, minmax(0, 1fr));
 }
+.grid-rows-3 {
+	grid-template-rows: repeat(3, minmax(0, 1fr));
+}
 .flex-row-reverse {
 	flex-direction: row-reverse;
 }
@@ -1546,6 +1558,9 @@ select {
 }
 .gap-3 {
 	gap: 0.75rem;
+}
+.gap-5 {
+	gap: 1.25rem;
 }
 .space-x-8 > :not([hidden]) ~ :not([hidden]) {
 	--tw-space-x-reverse: 0;
@@ -1877,6 +1892,15 @@ select {
 }
 .pr-7 {
 	padding-right: 1.75rem;
+}
+.pb-5 {
+	padding-bottom: 1.25rem;
+}
+.pb-10 {
+	padding-bottom: 2.5rem;
+}
+.text-left {
+	text-align: left;
 }
 .text-center {
 	text-align: center;
@@ -2571,6 +2595,10 @@ select {
 		margin-top: 1.75rem;
 	}
 
+	.md\:mb-0 {
+		margin-bottom: 0px;
+	}
+
 	.md\:block {
 		display: block;
 	}
@@ -2581,6 +2609,10 @@ select {
 
 	.md\:grid {
 		display: grid;
+	}
+
+	.md\:hidden {
+		display: none;
 	}
 
 	.md\:h-\[178px\] {
