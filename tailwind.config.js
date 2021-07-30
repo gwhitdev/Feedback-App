@@ -17,6 +17,7 @@ module.exports = {
             },
             textColor: {
                 'purpleText': '#4661E6',
+                'mainText': '#3A4374',
                 
             },
         },
