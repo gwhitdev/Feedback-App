@@ -32,6 +32,8 @@ module.exports = {
                 'categoryButton': '#F2F4FF',
                 'hoverButton': '#CFD7FF',
                 'activeButton': '#4661E6',
+                'lightBlue': '#62BCFA',
+                'orange': '#F49F85',
             })
     },
 

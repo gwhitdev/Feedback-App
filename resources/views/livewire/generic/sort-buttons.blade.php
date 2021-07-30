@@ -1,6 +1,3 @@
-   @php
-       $isActive = false;
-   @endphp
    <x-jet-dropdown :align="'left'">
        <x-slot name="trigger">
            Sort by : <span class="cursor-pointer">{{ $chosen }}</span> 

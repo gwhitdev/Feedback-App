@@ -10,21 +10,19 @@
             <livewire:generic.category-button :categories="$categories" />
         </div>
         <div class="bg-white rounded-xl md:h-[178px] md:w-[223px] lg:w-[255px] lg:h-[178px]">
+            <livewire:sidebar.roadmap />
         </div>
     </div>
     <div class="grid md:grid-cols-4 md:grid-rows-6 bg-blue-50 col-span-3">
         <div class="row-start-1 col-span-4">
             <livewire:feedback.feedback-menu :count="$count"/>
         </div>
-        <div class="rounded-xl row-start-2 row-span-4 col-span-4 grid bg-white lg:grid-rows-8 grid-cols-1 lg:h-full w-full">
+        <div class="rounded-xl row-start-2 row-span-4 col-span-4 grid  lg:grid-rows-8 grid-cols-1 lg:h-full w-full">
             @if($feedback->count() > 0)
-                <div class="row-span-12 rounded-xl h-full bg-white">
-                    <ul>
+                <div class="row-span-12 rounded-xl h-full ">
                         @foreach($feedback as $f)
-                            <li>{{ $f->title }} Votes:{{$f->votes}} Comments:{{$f->count_comments}} Category: {{$f->category->name}}</li>
-                        @endforeach
-                    </ul>
-                    
+                            <livewire:feedback.feedback-card :feedback=$f />
+                        @endforeach    
                 </div>
             @else
                 
