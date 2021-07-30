@@ -6,7 +6,7 @@
             {{$feedback->votes}}
         </div>
         <div class="col-span-6"> 
-            <h2><a href="/feedback/{{$feedback->feedback_id}}"><b>{{ $feedback->title }}</b></a></h2>
+            <h2><a href="/feedback/{{$feedback->id}}"><b>{{ $feedback->title }}</b></a></h2>
             <p>{{ $feedback->detail }}</p>
             {{ $feedback->category->name }}
         </div>

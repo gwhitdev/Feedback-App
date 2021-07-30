@@ -21,7 +21,7 @@
             @if($feedback->count() > 0)
                 <div class="row-span-12 rounded-xl h-full ">
                         @foreach($feedback as $f)
-                            <livewire:feedback.feedback-card :feedback=$f />
+                            <livewire:feedback.feedback-card :key="$f->id" :feedback=$f />
                         @endforeach    
                 </div>
             @else
