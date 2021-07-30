@@ -1332,6 +1332,9 @@ select {
 .h-\[8px\] {
 	height: 8px;
 }
+.h-auto {
+	height: auto;
+}
 .min-h-screen {
 	min-height: 100vh;
 }
@@ -1407,6 +1410,11 @@ select {
 .max-w-6xl {
 	max-width: 72rem;
 }
+.max-w-max {
+	max-width: -webkit-max-content;
+	max-width: -moz-max-content;
+	max-width: max-content;
+}
 .flex-1 {
 	flex: 1 1 0%;
 }
@@ -1481,6 +1489,9 @@ select {
 }
 .grid-rows-1 {
 	grid-template-rows: repeat(1, minmax(0, 1fr));
+}
+.grid-rows-2 {
+	grid-template-rows: repeat(2, minmax(0, 1fr));
 }
 .flex-row-reverse {
 	flex-direction: row-reverse;

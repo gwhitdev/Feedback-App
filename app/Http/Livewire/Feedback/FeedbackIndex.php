@@ -17,9 +17,11 @@ class FeedbackIndex extends Component
         'feedbackCreated' => 'getNewFeedback',
         'setCategory' => 'setCategory',
         'sort' => 'sort',
-        'showAll' => 'showAll'
+        'showAll' => 'showAll',
+        'voted' => 'showAll'
     ];
 
+    
     public function emitCounted()
     {
         $this->emit('counted',$this->feedback->count());
