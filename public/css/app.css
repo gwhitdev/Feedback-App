@@ -1799,6 +1799,9 @@ select {
 .pr-2 {
 	padding-right: 0.5rem;
 }
+.pt-3 {
+	padding-top: 0.75rem;
+}
 .text-center {
 	text-align: center;
 }

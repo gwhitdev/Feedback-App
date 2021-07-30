@@ -14,8 +14,8 @@ class SortButtons extends Component
     ];
     protected $toSortBy = [
         'votes' => [
-            'desc' => 'Most Votes',
-            'asc' => 'Least Votes'
+            'desc' => 'Most Upvotes',
+            'asc' => 'Least Upvotes'
         ],
         'comments' => [
             'desc' => 'Most Comments',
@@ -43,7 +43,7 @@ class SortButtons extends Component
     }
     public function mount()
     {
-        $this->chosen = 'Most Votes';
+        $this->chosen = 'Most Upvotes';
     }
     
     public function render()
