@@ -6,9 +6,16 @@ use Livewire\Component;
 
 class AddFeedbackButton extends Component
 {
+    public $cross = true;
+
     public function direct()
     {
         return redirect('/feedback/new');
+        
+
+    }
+    public function mount()
+    {
     }
     public function render()
     {

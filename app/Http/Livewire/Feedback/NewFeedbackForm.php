@@ -12,7 +12,7 @@ class NewFeedbackForm extends Component
 {
     public $detail;
     public $user_id;
-    public $status_id = 1;
+    public $status_id = 2;
     public $category_id;
     public $title;
     public $categories;
@@ -32,7 +32,7 @@ class NewFeedbackForm extends Component
         $f->detail = $this->detail;
         $f->status_id = $this->status_id;
         $f->category_id = $this->category_id;
-        $f->user_id = auth()->user()->id;
+        $f->user_id = $this->user_id;
         try
         {
             $f->save();
@@ -47,6 +47,7 @@ class NewFeedbackForm extends Component
     
     public function mount()
     {
+        $this->user_id = auth()->user()->id;
         $this->categories = Category::all();
     }
     public function render()
