@@ -1,4 +1,4 @@
-<div class="grid grid-rows-9 w-full w-[600px]">
+<div class="grid grid-rows-9 w-[600px]">
     <div class="row-start-1 row-span-2 mt-3 h-full">
         <livewire:feedback.feedback-card :feedback="$f"/>
     </div>

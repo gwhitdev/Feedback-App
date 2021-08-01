@@ -57,13 +57,16 @@ class FeedbackDetail extends Component
         $c->detail = $this->comment_detail;
         $c->feedback_id = $this->feedback_id;
         $c->user_id = auth()->user()->id;
+        $f = Feedback::find($this->feedback_id);
+        $f->count_comments = $f->count_comments + 1;
         try
         {
             $c->save();
+            $f->save();
         }
         catch(Exception $e)
         {
-            dd($e->getMessage());
+            dump($e->getMessage());
         }
         return redirect("/feedback/$this->feedback_id");
     }
