@@ -16,7 +16,8 @@ class FeedbackDetail extends Component
     public $count;
     public $user;
     public $users_list;
-
+    public $chars;
+    
     public function getCommentsCount()
     {
         return $this->f->comments()->count();
@@ -70,6 +71,11 @@ class FeedbackDetail extends Component
         }
         return redirect("/feedback/$this->feedback_id");
     }
+    public function updatedCommentDetail()
+    {
+        
+        $this->chars = 255 - strlen($this->comment_detail);
+    }
     public function mount($id)
     {
         $this->feedback_id = $id;
@@ -78,6 +84,7 @@ class FeedbackDetail extends Component
         $this->count = $this->getCommentsCount();
         //$this->user = $this->getUser();
         $this->getUserDetailsForComments();
+        $this->chars = 255;
     }
     public function render()
     {

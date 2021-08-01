@@ -38,8 +38,9 @@
                 <h1 class="text-lg font-bold">Add a comment</h1>
             </div>
             <form wire:submit.prevent='addComment' class="row-start-2 row-span-3 grid grid-rows-8">
-                <div class="row-start-1 row-span-1">
-                    <textarea wire:model="comment_detail"rows="5"class="w-full border-0 rounded-lg bg-gray-100"></textarea>
+                <div x-data class="row-start-1 row-span-1">
+                    <textarea x-ref="detail" @keyup="$refs.charsleft.innerText=255-$refs.detail.value.length" id="detail" wire:model.defer="comment_detail"rows="5"class="w-full border-0 rounded-lg bg-gray-100"></textarea>
+                    <span x-ref="charsleft">255</span> characters left
                 </div>
                 <div class="row-start-2 row-span-1">
                     <button class="float-right pt-3 pb-3 pl-4 pr-4 rounded-xl font-bold text-white bg-feedbackButton">
