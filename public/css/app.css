@@ -1142,6 +1142,9 @@ select {
 .col-span-2 {
 	grid-column: span 2 / span 2;
 }
+.col-span-7 {
+	grid-column: span 7 / span 7;
+}
 .col-start-1 {
 	grid-column-start: 1;
 }
@@ -1187,6 +1190,12 @@ select {
 .row-start-5 {
 	grid-row-start: 5;
 }
+.row-start-7 {
+	grid-row-start: 7;
+}
+.row-start-6 {
+	grid-row-start: 6;
+}
 .float-right {
 	float: right;
 }
@@ -1199,6 +1208,10 @@ select {
 .mx-auto {
 	margin-left: auto;
 	margin-right: auto;
+}
+.mx-3 {
+	margin-left: 0.75rem;
+	margin-right: 0.75rem;
 }
 .ml-3 {
 	margin-left: 0.75rem;
@@ -1368,6 +1381,15 @@ select {
 .h-\[8px\] {
 	height: 8px;
 }
+.h-\[20px\] {
+	height: 20px;
+}
+.h-\[50px\] {
+	height: 50px;
+}
+.h-\[40px\] {
+	height: 40px;
+}
 .min-h-screen {
 	min-height: 100vh;
 }
@@ -1428,8 +1450,26 @@ select {
 .w-\[540px\] {
 	width: 540px;
 }
+.w-\[20px\] {
+	width: 20px;
+}
+.w-\[50px\] {
+	width: 50px;
+}
+.w-\[40px\] {
+	width: 40px;
+}
+.w-\[594px\] {
+	width: 594px;
+}
+.w-\[600px\] {
+	width: 600px;
+}
 .min-w-0 {
 	min-width: 0px;
+}
+.min-w-\[600px\] {
+	min-width: 600px;
 }
 .max-w-screen-xl {
 	max-width: 1280px;
@@ -1447,6 +1487,12 @@ select {
 	max-width: -webkit-max-content;
 	max-width: -moz-max-content;
 	max-width: max-content;
+}
+.max-w-\[594px\] {
+	max-width: 594px;
+}
+.max-w-\[600px\] {
+	max-width: 600px;
 }
 .flex-1 {
 	flex: 1 1 0%;
@@ -1516,6 +1562,9 @@ select {
 }
 .grid-cols-4 {
 	grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.grid-cols-2 {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .grid-rows-3 {
 	grid-template-rows: repeat(3, minmax(0, 1fr));
@@ -1790,6 +1839,14 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgba(215, 55, 55, var(--tw-bg-opacity));
 }
+.bg-black {
+	--tw-bg-opacity: 1;
+	background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
+}
+.bg-red-500 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(239, 68, 68, var(--tw-bg-opacity));
+}
 .bg-opacity-25 {
 	--tw-bg-opacity: 0.25;
 }
@@ -1814,6 +1871,9 @@ select {
 }
 .p-1 {
 	padding: 0.25rem;
+}
+.p-5 {
+	padding: 1.25rem;
 }
 .px-4 {
 	padding-left: 1rem;
@@ -1936,6 +1996,9 @@ select {
 }
 .pr-5 {
 	padding-right: 1.25rem;
+}
+.pr-3 {
+	padding-right: 0.75rem;
 }
 .text-left {
 	text-align: left;
