@@ -16,8 +16,10 @@ class FeedbackDetail extends Component
     public $count;
     public $user;
     public $users_list;
-    public $chars;
     
+    protected $rules = [
+        'comment_detail' => 'required|max:255'
+    ];
     public function getCommentsCount()
     {
         return $this->f->comments()->count();
@@ -54,6 +56,7 @@ class FeedbackDetail extends Component
     }
     public function addComment()
     {
+        $this->validate();
         $c = new Comment;
         $c->detail = $this->comment_detail;
         $c->feedback_id = $this->feedback_id;
@@ -71,20 +74,14 @@ class FeedbackDetail extends Component
         }
         return redirect("/feedback/$this->feedback_id");
     }
-    public function updatedCommentDetail()
-    {
-        
-        $this->chars = 255 - strlen($this->comment_detail);
-    }
+    
     public function mount($id)
     {
         $this->feedback_id = $id;
         $this->f = $this->getFeedbackRow();
         $this->comments = $this->getComments();
         $this->count = $this->getCommentsCount();
-        //$this->user = $this->getUser();
         $this->getUserDetailsForComments();
-        $this->chars = 255;
     }
     public function render()
     {
