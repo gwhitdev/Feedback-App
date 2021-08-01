@@ -33,16 +33,21 @@ class NewFeedbackForm extends Component
         $f->status_id = $this->status_id;
         $f->category_id = $this->category_id;
         $f->user_id = $this->user_id;
+        $this->validate();
         try
         {
             $f->save();
         }
         catch (Exception $e)
         {
-            dd($e->getMessage());
+            $e->getMessage();
         }
         
         return redirect('/feedback');
+    }
+    public function cancel()
+    {
+        return $this->redirect('/feedback');
     }
     
     public function mount()

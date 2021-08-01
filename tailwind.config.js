@@ -35,7 +35,12 @@ module.exports = {
                 'activeButton': '#4661E6',
                 'lightBlue': '#62BCFA',
                 'orange': '#F49F85',
-                'darkButton': '#3A4374'
+                'darkButton': '#3A4374',
+                'purpleButtonHover':'#C75AF6',
+                'blueButtonHover':'#7C91F9',
+                'darkButtonHover':'#656EA3',
+                'redButton':'#D73737',
+                'redButtonHover':'#E98888',
             })
     },
 
