@@ -14,8 +14,12 @@ class FeedbackController extends Controller
     {
         return view('feedback/new');
     }
-    public function test()
+    public function detail(Request $request,$feedback_id)
     {
-        return view('feedback/test');
+        return view('feedback/detail',compact('feedback_id'));
+    }
+    public function edit(Request $request,$feedback_id)
+    {
+        return view('feedback/edit',compact('feedback_id'));
     }
 }

@@ -13,7 +13,7 @@ class NewFeedbackForm extends Component
     public $detail;
     public $user_id;
     public $status_id = 2;
-    public $category_id;
+    public $category_id = 2;
     public $title;
     public $categories;
 
@@ -40,7 +40,8 @@ class NewFeedbackForm extends Component
         }
         catch (Exception $e)
         {
-            $e->getMessage();
+            dump($e->getMessage());
+            return redirect('/feedback/new');
         }
         
         return redirect('/feedback');

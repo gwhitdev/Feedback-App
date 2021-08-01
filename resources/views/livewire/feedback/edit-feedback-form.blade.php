@@ -2,9 +2,9 @@
     <img src="{{asset('storage/images/shared/icon-new-feedback.svg')}}" class="relative top-[-25px] left-[50px]">
     <div class="grid grid-rows-7 pl-10 pr-10 pb-10 w-[540px]">
         <div class="row-start-1 row-span-1 ">
-            <h1 class="font-bold text-xl">Create New Feedback</h1>
+            <h1 class="font-bold text-xl">Editing '{{ $feedback->title }}'</h1>
         </div>
-            <form class="row-start-2 row-span-6 mt-5 grid grid-rows-8" wire:submit.prevent="create"> 
+            <form class="row-start-2 row-span-6 mt-5 grid grid-rows-10" wire:submit.prevent="save"> 
                 <div class="row-span-1 row-start-1">
                     <label class="font-bold" for="title">Feedback Title</label><br>
                     <span class="text-[10pt]">Add a short descriptive headline</span>
@@ -20,6 +20,17 @@
                     </select>
                     <span class="text-red-500">@error('category_id'){{ "Please choose a category."}}  @enderror</span>
                 </div>
+                <div class="row-span-1 row-start-3 mt-5">
+                    <label class="font-bold" for="category">Update Status</label><br>
+                    <span class="text-[10pt]">Change feature state.</span>
+                    <select style="background-size: 1em; background-image: url({{asset('storage/images/shared/icon-arrow-down.svg')}})"class="w-full border-0 rounded-lg bg-gray-100" name="status_id" wire:model='status_id'>
+                        @foreach($status_list as $status)
+                        <option value="{{$status['id']}}">{{ $status['status'] }}</option>
+                        @endforeach
+                    </select>
+                    <span class="text-red-500">@error('category_id'){{ "Please choose a category."}}  @enderror</span>
+                </div>
+                
                 <div class="row-span-3 mt-5">
                     
                     <label class="font-bold" for="detail">Feedback Detail</label><br>
@@ -28,9 +39,16 @@
                     <span class="text-red-500">@error('detail'){{ "Can't be empty." }}@enderror</span>
                 </div>
                 <div class="row-span-1 mt-5">
-                    <div class="float-right">
-                        <a href="/feedback" class="justify-center flex-none pt-3 pb-3 pl-5 pr-5 hover:bg-darkButtonHover bg-darkButton  mt-3 mb-3 mr-7 md:m-3 text-white font-bold rounded-xl">Cancel</a>
-                        <livewire:feedback.create-feedback-button wire:click="create" />
+                    <div>
+                        <button wire:click="delete" class="float-left justify-center flex-none pt-3 pb-3 pl-5 pr-5 hover:bg-redButtonHover bg-redButton  ml-0 mt-3 mb-3 mr-7 md:m-3 text-white font-bold rounded-xl">
+                            Delete
+                        </button>
+                        
+                        <button wire:click="save" class="float-right justify-center flex-none pt-3 pb-3 pl-4 pr-4 hover:bg-purpleButtonHover bg-feedbackButton  mt-3 mb-3 md:m-3 text-white font-bold rounded-xl" >
+                            Save changes
+                        </button>
+                        
+                        <a href="/feedback" class="float-right justify-center flex-none pt-3 pb-3 pl-5 pr-5 hover:bg-darkButtonHover bg-darkButton  mt-3 mb-3 mr-7 md:m-3 text-white font-bold rounded-xl">Cancel</a>
                     </div>
                 </div>
             </form> 
