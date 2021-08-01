@@ -2,7 +2,7 @@
     <img src="{{asset('storage/images/shared/icon-new-feedback.svg')}}" class="relative top-[-25px] left-[50px]">
     <div class="grid grid-rows-5 pl-10 pr-10 pb-10 w-[540px]">
         <div class="row-start-1 row-span-1 h-full">
-            <h1 class="font-bold">Create New Feedback</h1>
+            <h1 class="font-bold text-lg">Create New Feedback</h1>
         </div>
             <form class="row-start-2 row-span-4 mt-[-25px]" wire:submit.prevent="create"> 
                 <div class="row-span-1">
@@ -28,6 +28,7 @@
                 </div>
                 <div class="row-span-1 mt-5">
                     <div class="float-right">
+                        <button class="justify-center flex-none pt-3 pb-3 pl-5 pr-5 bg-darkButton  mt-3 mb-3 mr-7 md:m-3 text-white font-bold rounded-xl">Cancel</button>
                         <livewire:feedback.create-feedback-button wire:click="create" />
                     </div>
                 </div>

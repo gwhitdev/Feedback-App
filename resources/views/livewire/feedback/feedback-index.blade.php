@@ -43,13 +43,13 @@
         </div>
         <div class="rounded-xl row-start-2 row-span-4 col-span-4 grid  lg:grid-rows-8 grid-cols-1 lg:h-full w-full">
             @if($feedback->count() > 0)
-                <div class="row-span-12 rounded-xl h-screen md:mt-20 lg:mt-0">
+                <div class="row-span-12 rounded-xl h-screen md:mt-20 lg:mt-[-10px]">
                         @foreach($feedback as $f)
                             <livewire:feedback.feedback-card :key="$f->id" :feedback=$f />
                         @endforeach    
                 </div>
             @else
-                <div class="bg-white md:mt-20 md:rounded-xl md:p-5 md:pt-10">
+                <div class="bg-white md:mt-20 md:rounded-xl md:p-5 md:pt-10 lg:mt-0">
                     <div class="row-start-3  h-[136px] flex justify-center ">
                         <img  src="{{asset('storage/images/desktop/illustration-empty.svg')}}">
                     </div>
@@ -61,7 +61,7 @@
                             We love hearing about new ideas to improve our app.
                         </p>
                     </div>
-                    <div class="row-start-5 text-center">
+                    <div class="row-start-5 text-center ">
                         <livewire:feedback.add-feedback-button />
                     </div>
                 </div>
