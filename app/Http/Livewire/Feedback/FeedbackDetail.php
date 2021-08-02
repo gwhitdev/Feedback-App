@@ -17,9 +17,7 @@ class FeedbackDetail extends Component
     public $user;
     public $users_list;
     
-    protected $rules = [
-        'comment_detail' => 'required|max:255'
-    ];
+    
     public function getCommentsCount()
     {
         return $this->f->comments()->count();
@@ -54,26 +52,7 @@ class FeedbackDetail extends Component
         
         //dd($this->users_list);
     }
-    public function addComment()
-    {
-        $this->validate();
-        $c = new Comment;
-        $c->detail = $this->comment_detail;
-        $c->feedback_id = $this->feedback_id;
-        $c->user_id = auth()->user()->id;
-        $f = Feedback::find($this->feedback_id);
-        $f->count_comments = $f->count_comments + 1;
-        try
-        {
-            $c->save();
-            $f->save();
-        }
-        catch(Exception $e)
-        {
-            dump($e->getMessage());
-        }
-        return redirect("/feedback/$this->feedback_id");
-    }
+    
     
     public function mount($id)
     {

@@ -48,7 +48,6 @@ class FeedbackIndex extends Component
     }
     public function sortByCategory($details)
     {
-        dump($details);
         $this->feedback = $this->getBaseFeedback()->where('category_id',$this->chosen_category)->reorder($details[0],$details[1])->get();
     }
     public function setCategory($category_id)

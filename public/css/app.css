@@ -1315,6 +1315,9 @@ select {
 .ml-0 {
 	margin-left: 0px;
 }
+.ml-10 {
+	margin-left: 2.5rem;
+}
 .block {
 	display: block;
 }
@@ -1464,6 +1467,15 @@ select {
 }
 .w-\[600px\] {
 	width: 600px;
+}
+.w-\[250px\] {
+	width: 250px;
+}
+.w-\[400px\] {
+	width: 400px;
+}
+.w-\[350px\] {
+	width: 350px;
 }
 .min-w-0 {
 	min-width: 0px;
