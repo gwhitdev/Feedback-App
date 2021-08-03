@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
+use App\Models\Alias;
 
 class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 {
@@ -22,6 +23,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
+            'alias' => ['required','max:12', Rule::unique('aliases'),'string']
         ])->validateWithBag('updateProfileInformation');
 
         if (isset($input['photo'])) {
@@ -37,6 +39,10 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'email' => $input['email'],
             ])->save();
         }
+        $a = Alias::where('user_id',$user->id)->first();
+        $a->alias = $input['alias'];
+        $a->save();
+
     }
 
     /**
@@ -52,6 +58,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'name' => $input['name'],
             'email' => $input['email'],
             'email_verified_at' => null,
+            'alias' => $input['alias'],
         ])->save();
 
         $user->sendEmailVerificationNotification();

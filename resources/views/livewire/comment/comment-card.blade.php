@@ -31,7 +31,7 @@
                         @endif
                     </div>
                     <div class="col-span-7 row-span-2 mt-5">
-                        {{ $repliesUsersList[$reply['user_id']]['name'] }}<br>
+                        <span class="font-bold">{{ $repliesUsersList[$reply['user_id']]['name'] }}</span><br>
                         <span>{{ $repliesUsersList[$reply['user_id']]['alias']}}</span>
                         <p class="mt-3"><span class="text-lightPurpleText mr-1 font-bold">{{ $users_list[$comment['user_id']]['alias'] }}</span> {{ $reply->detail }}</p>
                     </div>
