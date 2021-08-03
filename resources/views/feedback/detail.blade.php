@@ -8,7 +8,7 @@
                     </a>
 
             </div>
-            <div class="row-start-2 row-span-9">
+            <div class="row-start-2 row-span-9 ">
                 <livewire:feedback.feedback-detail :id="$feedback_id" />
             </div>
         </div>
