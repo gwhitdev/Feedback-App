@@ -2,10 +2,10 @@
 
 namespace App\Http\Livewire\Feedback;
 
-use Illuminate\Foundation\Auth\User;
+//use Illuminate\Foundation\Auth\User;
 use Livewire\Component;
 use App\Models\Feedback;
-use App\Models\Comment;
+use App\Models\User;
 use Exception;
 class FeedbackDetail extends Component
 {
@@ -44,13 +44,18 @@ class FeedbackDetail extends Component
         $user_details = array();
         foreach($this->comments as $comment)
         {
-            $name = User::find($comment['user_id'])->name;
-            $profilePic = User::find($comment['user_id'])->profile_photo_path;
-            $user_details[$comment['user_id']] = ['name'=>$name,'photo'=>$profilePic];
+            $user = User::find($comment['user_id']);
+            $name = $user->name;
+            $alias = $user->alias()->first()->alias;
+            $profilePic = $user->profile_photo_path;
+
+            $user_details[$comment['user_id']] = [
+                'name' => $name,
+                'photo' => $profilePic,
+                'alias' => '@' . $alias
+            ];
         }
         $this->users_list = $user_details;
-        
-        //dd($this->users_list);
     }
     
     

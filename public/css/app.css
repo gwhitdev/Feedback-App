@@ -1291,6 +1291,9 @@ select {
 .ml-8 {
 	margin-left: 2rem;
 }
+.mb-5 {
+	margin-bottom: 1.25rem;
+}
 .mr-1 {
 	margin-right: 0.25rem;
 }
@@ -1305,9 +1308,6 @@ select {
 }
 .ml-5 {
 	margin-left: 1.25rem;
-}
-.mb-5 {
-	margin-bottom: 1.25rem;
 }
 .ml-0 {
 	margin-left: 0px;
@@ -2107,6 +2107,10 @@ select {
 .text-black {
 	--tw-text-opacity: 1;
 	color: rgba(0, 0, 0, var(--tw-text-opacity));
+}
+.text-lightPurpleText {
+	--tw-text-opacity: 1;
+	color: rgba(173, 31, 234, var(--tw-text-opacity));
 }
 .underline {
 	text-decoration: underline;

@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Comment;
 use Livewire\Component;
 use App\Models\User;
 use App\Models\Comment;
+use App\Models\Alias;
 
 class CommentCard extends Component
 {
@@ -13,18 +14,26 @@ class CommentCard extends Component
     public $replies;
     public $tempComment;
     public $repliesUsersList;
+    //public $alias;
 
     public function getRepliesUsersList()
     {
         $users = array();
+        //dd($this->replies);
         foreach($this->replies as $reply)
         {
-            $user = User::find($reply['user_id'])->first();
+            $user = User::find($reply['user_id']);
             $name = $user->name;
             $profilePic = $user->profile_photo_path;
-            $users[$reply['user_id']] = ['name' => $name, 'photo' => $profilePic];
+            $alias = $user->alias()->first()->alias;
             
+            $users[$reply['user_id']] = [
+                'name' => $name,
+                'photo' => $profilePic,
+                'alias' => '@' . $alias
+            ];
         }
+        //dd($users);
         return $this->repliesUsersList = $users;
     }
     public function getReplies()
@@ -47,7 +56,7 @@ class CommentCard extends Component
             $this->replies = $this->getReplies();
             $this->repliesUserList = $this->getRepliesUsersList();
         }
-        
+        //dd($this->repliesUsersList);
     }
     public function render()
     {
