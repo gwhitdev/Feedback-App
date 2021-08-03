@@ -26,7 +26,7 @@ class CreateNewUser implements CreatesNewUsers
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
-            'alias' => ['required','string','max:12','unique:aliases',]
+            'alias' => ['required','string','max:25','unique:aliases',]
         ])->validate();
 
         $user = User::create([
@@ -39,7 +39,7 @@ class CreateNewUser implements CreatesNewUsers
         
         Alias::create([
             'user_id' => $user_id,
-            'alias' => $input['alias']
+            'alias' => preg_replace('/\s+/', '', $input['alias'])
         ]);
         
         return $user;

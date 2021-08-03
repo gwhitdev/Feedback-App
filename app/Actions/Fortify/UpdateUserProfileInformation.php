@@ -23,7 +23,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
-            'alias' => ['required','max:12', Rule::unique('aliases'),'string']
+            'alias' => ['required','max:25', Rule::unique('aliases')->ignore($user->id),'string']
         ])->validateWithBag('updateProfileInformation');
 
         if (isset($input['photo'])) {
@@ -40,7 +40,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             ])->save();
         }
         $a = Alias::where('user_id',$user->id)->first();
-        $a->alias = $input['alias'];
+        $a->alias = preg_replace('/\s+/', '', $input['alias']);
         $a->save();
 
     }

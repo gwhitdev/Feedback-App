@@ -28,7 +28,7 @@ class NewReply extends Component
         $this->validate();
         $r = new Reply;
         $r->user_id = $this->user;
-        $r->comment_id = $this->comment['id']   ;
+        $r->comment_id = $this->comment['id'];
         $r->feedback_id = $this->fId;
         $r->detail = $this->reply_detail;
         try

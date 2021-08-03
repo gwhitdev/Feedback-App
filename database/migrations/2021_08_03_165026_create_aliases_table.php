@@ -16,7 +16,7 @@ class CreateAliasesTable extends Migration
         Schema::create('aliases', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('alias',12)->nullable(false)->unique();
+            $table->string('alias',25)->nullable(false)->unique();
             $table->bigInteger('user_id')->unsigned()->unique()->nullable(false);
             $table->boolean('removed')->default(false);
             $table->boolean('disabled')->default(false);
@@ -30,6 +30,6 @@ class CreateAliasesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alises');
+        Schema::dropIfExists('aliases');
     }
 }
