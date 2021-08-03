@@ -12,7 +12,21 @@ class CommentCard extends Component
     public $users_list;
     public $replies;
     public $tempComment;
+    public $repliesUsersList;
 
+    public function getRepliesUsersList()
+    {
+        $users = array();
+        foreach($this->replies as $reply)
+        {
+            $user = User::find($reply['user_id'])->first();
+            $name = $user->name;
+            $profilePic = $user->profile_photo_path;
+            $users[$reply['user_id']] = ['name' => $name, 'photo' => $profilePic];
+            
+        }
+        return $this->repliesUsersList = $users;
+    }
     public function getReplies()
     {
         $c = $this->tempComment;
@@ -31,8 +45,9 @@ class CommentCard extends Component
         if($this->checkForReplies() > 0)
         {
             $this->replies = $this->getReplies();
+            $this->repliesUserList = $this->getRepliesUsersList();
         }
-        //dd($this->replies);
+        
     }
     public function render()
     {

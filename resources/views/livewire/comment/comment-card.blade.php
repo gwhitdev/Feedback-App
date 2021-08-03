@@ -18,11 +18,11 @@
                 @if($replies)
                 @foreach($replies as $reply)
                     <div class="col-span-1 row-span-2 mt-2">
-                        <div class="w-[40px] h-[40px] bg-purple-600 rounded-full"></div>
+                        <img class="w-[40px] h-[40px] bg-purple-600 rounded-full"src="{{ asset("storage/{$repliesUsersList[$reply['user_id']]['photo']}")}}">
+                        
                     </div>
                     <div class="col-span-7 row-span-2 mt-2">
-                        {{ $reply->user_id}}<br>
-                        {{ $reply->detail }}
+                        {{ $repliesUsersList[$reply['user_id']]['name'] }}
                     </div>
                 @endforeach
                 @endif
