@@ -12,8 +12,8 @@ class NewFeedbackForm extends Component
 {
     public $detail;
     public $user_id;
-    public $status_id = 2;
-    public $category_id = 2;
+    public $status_id = 1;
+    public $category_id = 1;
     public $title;
     public $categories;
 

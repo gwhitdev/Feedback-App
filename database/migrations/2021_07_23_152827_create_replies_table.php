@@ -19,7 +19,7 @@ class CreateRepliesTable extends Migration
             $table->string('detail')->nullable(false);
             $table->bigInteger('comment_id')->unsigned()->nullable(false);
             $table->bigInteger('feedback_id')->unsigned()->nullable(false);
-            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned()->nullable(false);
         });
     }
 

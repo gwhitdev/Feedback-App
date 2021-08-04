@@ -38,8 +38,8 @@ class AddForeignKeys extends Migration
     {
         Schema::table('comments', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
-            $table->dropForeign(['parent_feedback_id']);
-            $table->dropForeign(['parent_comment_id']);
+            $table->dropForeign(['feedback_id']);
+            $table->dropForeign(['comment_id']);
         });
         Schema::table('replies', function (Blueprint $table) {
             $table->dropForeign(['user_id']);

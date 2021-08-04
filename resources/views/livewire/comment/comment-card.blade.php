@@ -20,31 +20,35 @@
             <div class="ml-[70px]">
                 {{ $comment['detail'] }}
             </div>
-            <div x-data="{showSecondReply: false}" class="ml-8 mt-5 pl-[50px] grid grid-cols-8 grid-rows-8 ">
+            <div   class="ml-8 mt-5 pl-[50px] grid grid-cols-8 grid-rows-8 ">
                 @if($replies)
                 @foreach($replies as $reply)
-                    <div class="col-span-1 row-span-2 mt-5">
+                
+                    <div  class="col-span-1 row-span-2 mt-5">
                         @if($repliesUsersList[$reply['user_id']]['photo'] != null)
                             <img class="w-[40px] h-[40px] mx-auto rounded-full"src="{{ asset("storage/{$repliesUsersList[$reply['user_id']]['photo']}")}}">
                         @else
                             <div class="w-[40px] h-[40px] mx-auto bg-purple-600 rounded-full"></div>
                         @endif
                     </div>
-                    <div  class="col-span-7 row-span-2 mt-5">
+                    
+                    <div x-data="{showSecondReply: false}" class="col-span-7 row-span-2 mt-5">
                         <span class="font-bold">{{ $repliesUsersList[$reply['user_id']]['name'] }}</span><br>
                         <span>{{ $repliesUsersList[$reply['user_id']]['alias']}}</span>
                         <span @click="showSecondReply = ! showSecondReply" class="hover:underline float-right text-purpleText font-semibold">Reply</span>
                         <p class="mt-3"><span class="text-lightPurpleText mr-1 font-bold">{{ $users_list[$comment['user_id']]['alias'] }}</span> {{ $reply->detail }}</p>
+                        <div x-cloak x-show="showSecondReply" class="mt-5 col-start-2 col-span-7">
+                            <livewire:reply.new-reply :replyType="'secondaryReply'" :comment="$reply"/>
+                        </div>
                     </div>
-                    <div x-cloak x-show="showSecondReply" class="mt-5 col-start-2 col-span-7">
-                        <livewire:reply.new-reply :commentOrReply="'reply'" :comment="$reply"/>
-                    </div>
+                    
+                
                 @endforeach
                 @endif
             </div>
         </div>
         <div x-cloak x-show="showReply" class="mt-5 col-start-2 col-span-7">
-            <livewire:reply.new-reply :commentOrReply="'comment'" :comment="$comment"/>
+            <livewire:reply.new-reply :replyType="'reply'" :comment="$comment"/>
         </div>
         <div class="col-span-8 row-span-1 mt-10 mb-5">
             <hr>
