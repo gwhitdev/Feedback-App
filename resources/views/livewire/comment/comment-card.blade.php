@@ -37,14 +37,14 @@
                         <p class="mt-3"><span class="text-lightPurpleText mr-1 font-bold">{{ $users_list[$comment['user_id']]['alias'] }}</span> {{ $reply->detail }}</p>
                     </div>
                     <div x-cloak x-show="showSecondReply" class="mt-5 col-start-2 col-span-7">
-                        <livewire:reply.new-reply :comment="$reply"/>
+                        <livewire:reply.new-reply :commentOrReply="'reply'" :comment="$reply"/>
                     </div>
                 @endforeach
                 @endif
             </div>
         </div>
         <div x-cloak x-show="showReply" class="mt-5 col-start-2 col-span-7">
-            <livewire:reply.new-reply :comment="$comment"/>
+            <livewire:reply.new-reply :commentOrReply="'comment'" :comment="$comment"/>
         </div>
         <div class="col-span-8 row-span-1 mt-10 mb-5">
             <hr>

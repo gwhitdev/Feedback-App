@@ -17,6 +17,7 @@ class NewReply extends Component
     protected $rules = [
         'reply_detail' => 'required|max:255'
     ];
+    public $commentOrReply;
     public function incrementFeedbackCommentsCount()
     {
         $f = Feedback::find($this->fId);
@@ -28,7 +29,16 @@ class NewReply extends Component
         $this->validate();
         $r = new Reply;
         $r->user_id = $this->user;
-        $r->comment_id = $this->comment['id'];
+        if($this->commentOrReply == 'comment')
+        {
+            $r->comment_id = $this->comment['id'];   
+            $r->reply_id = 0; 
+        }
+        else
+        {
+            $r->reply_id = $this->comment['id'];
+            $r->comment_id = 0;
+        }
         $r->feedback_id = $this->fId;
         $r->detail = $this->reply_detail;
         try
@@ -42,8 +52,9 @@ class NewReply extends Component
             dd($e->getMessage());
         }
     }
-    public function mount($comment)
+    public function mount($comment,$commentOrReply)
     {
+        $this->commentOrReply = $commentOrReply;
         $this->user = auth()->user()->id;
         $this->comment = $comment;
         $this->fId = $this->comment['feedback_id'];
