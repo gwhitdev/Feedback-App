@@ -6,14 +6,15 @@ use Livewire\Component;
 use Illuminate\Http\Request;
 use App\Models\Feedback;
 use App\Models\Category;
+use App\Models\Status;
 use Exception;
 
 class NewFeedbackForm extends Component
 {
     public $detail;
     public $user_id;
-    public $status_id = 1;
-    public $category_id = 1;
+    public $status_id;
+    public $category_id;
     public $title;
     public $categories;
 
@@ -53,6 +54,8 @@ class NewFeedbackForm extends Component
     
     public function mount()
     {
+        $this->category_id = Category::where('name','Feature')->first()->id;
+        $this->status_id = Status::where('status','Suggestion')->first()->id;
         $this->user_id = auth()->user()->id;
         $this->categories = Category::all();
     }
