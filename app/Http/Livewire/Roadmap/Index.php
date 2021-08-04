@@ -16,7 +16,7 @@ class Index extends Component
     public $planned_feedback_list;
     public $live_feedback_list;
     public $progress_feedback_list;
-
+    public $lists;
     public function mount()
     {
         $this->planned_id = Status::where('status','Planned')->first()->id;
@@ -26,7 +26,26 @@ class Index extends Component
         $this->planned_feedback_list = Feedback::where('status_id',$this->planned_id)->get();
         $this->live_feedback_list = Feedback::where('status_id',$this->live_id)->get();
         $this->progress_feedback_list = Feedback::where('status_id',$this->progress_id)->get();
-        //dd($this->planned_feedback_list->count());
+        $this->lists = [
+            'planned' => [ 
+                'data' => $this->planned_feedback_list,
+                'title' => 'Planned',
+                'subtitle' => 'Ideas prioritised for research',
+                'color' => 'orange'
+            ],
+            'progress' => [
+                'data' => $this->progress_feedback_list,
+                'title' => 'In-Progress',
+                'subtitle' => 'Currently being developed',
+                'color' => 'feedbackButton'
+            ],
+            'live' => [
+                'data' => $this->live_feedback_list,
+                'title' => 'Live',
+                'subtitle' => 'Released features',
+                'color' => 'lightBlue'
+            ],
+        ];
     }
     public function render()
     {
