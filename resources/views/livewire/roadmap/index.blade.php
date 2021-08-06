@@ -17,10 +17,41 @@
         </div>
     </div>
 
-<div class="md:mx-3 md:divide-x-[20px] md:divide-blue-50 grid grid-cols-1 md:grid-cols-3 md:grid-rows-1 mx-auto justify-center w-auto ">
+<div  x-data="{selected:'planned'}" class="md:mx-3 md:divide-x-[20px] md:divide-blue-50 grid grid-cols-1 md:grid-cols-3 md:grid-rows-1 mx-auto justify-center w-screen ">
+    <div class="grid grid-cols-3 mt-3 w-screen md:hidden">
+            <div :class="selected != 'planned' ? 'bg-gray-200' : 'bg-lightBlue'">
+                <div :class="selected != 'planned' ? 'text-gray-400 bg-blue-50 mb-[2px] h-6/6' : 'bg-blue-50 h-5/6' " @click=" selected !== 'planned' ? selected = 'planned' : selected = null" class="col-span-1">
+                    <p class="p-10 text-center font-bold">Planned</p>
+                    
+                    
+                </div>
+            </div>
+            <div :class="selected != 'progress' ? 'bg-gray-200 h-full' : 'bg-purple-500 h-full'">
+                <div :class="selected != 'progress' ? 'text-gray-400 bg-blue-50 mb-[2px] h-6/6' : 'bg-blue-50 h-5/6 ' " @click=" selected !== 'progress' ? selected = 'progress' : selected = null" class="col-span-1">
+                    <p class="p-10 text-center font-bold">In Progress</p>
+                </div>
+                
+            </div>
+            <div :class="selected != 'live' ? 'bg-gray-200' : 'bg-orange'">
+                <div :class="selected != 'live' ? 'text-gray-400 bg-blue-50 mb-[2px] h-12/12' : 'bg-blue-50 h-5/6 ' "  @click=" selected !== 'live' ? selected = 'live' : selected = null" class="col-span-1">
+                    <p class="p-10 text-center font-bold">Live</p>
+                   
+                    
+                </div>
+            </div>
+            
+        
+
+    </div>
     @foreach($lists as $l)
-        <div class="col-span-1">
+        <div class="hidden md:grid md:col-span-1">
             <livewire:roadmap.plan-column :list="$l" />
+        </div>
+        <div class="grid grid-cols-4 w-full md:hidden">
+           
+            <div class="row-span-1">
+                <livewire:roadmap.plan-column :list='$l' />
+            </div>
         </div>
     @endforeach
 

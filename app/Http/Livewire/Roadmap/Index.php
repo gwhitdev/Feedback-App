@@ -31,7 +31,7 @@ class Index extends Component
                 'data' => $this->planned_feedback_list,
                 'title' => 'Planned',
                 'subtitle' => 'Ideas prioritised for research',
-                'color' => 'orange'
+                'color' => 'lightBlue'
             ],
             'progress' => [
                 'data' => $this->progress_feedback_list,
@@ -43,7 +43,7 @@ class Index extends Component
                 'data' => $this->live_feedback_list,
                 'title' => 'Live',
                 'subtitle' => 'Released features',
-                'color' => 'lightBlue'
+                'color' => 'orange'
             ],
         ];
     }
