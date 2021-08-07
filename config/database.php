@@ -3,20 +3,76 @@
 use Illuminate\Support\Str;
 if(env('APP_ENV') == 'production')
 {
-    $databaseUrl = parse_url(env("CLEARDB_DATABASE_URL"));
+    $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+    $host = $url["host"];
+    $username = $url['user'];
+    $password = $url["pass"];
+    $database = substr($url["path"],1);
 
+    
     return [
-        'default' => env('DB_CONNECTION','clear_db'),
+        'default' => env('DB_CONNECTION', 'clear_db'),
         'connections' => [
-            'clear_db' => [
-                'url' => $databaseUrl,
-                'host' => $databaseUrl['host'],
-                'port' => 3306,
-                'database' => substr($url["path"], 1),
-                'username' => $databaseUrl['user'],
-                'password' => $databaseUrl['pass'],
-            ]
-        ]
+        'clear_db' => array (
+            'driver'=> 'mysql',
+            'host' => $host,
+            'database' => $database,
+            'username' => $username,
+            'password' => $password,
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+             ),
+            ],
+            /*
+    |--------------------------------------------------------------------------
+    | Migration Repository Table
+    |--------------------------------------------------------------------------
+    |
+    | This table keeps track of all the migrations that have already run for
+    | your application. Using this information, we can determine which of
+    | the migrations on disk haven't actually been run in the database.
+    |
+    */
+
+    'migrations' => 'migrations',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Redis Databases
+    |--------------------------------------------------------------------------
+    |
+    | Redis is an open source, fast, and advanced key-value store that also
+    | provides a richer body of commands than a typical key-value system
+    | such as APC or Memcached. Laravel makes it easy to dig right in.
+    |
+    */
+
+    'redis' => [
+
+        'client' => env('REDIS_CLIENT', 'phpredis'),
+
+        'options' => [
+            'cluster' => env('REDIS_CLUSTER', 'redis'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+        ],
+
+        'default' => [
+            'url' => env('REDIS_URL'),
+            'host' => env('REDIS_HOST', '127.0.0.1'),
+            'password' => env('REDIS_PASSWORD', null),
+            'port' => env('REDIS_PORT', '6379'),
+            'database' => env('REDIS_DB', '0'),
+        ],
+
+        'cache' => [
+            'url' => env('REDIS_URL'),
+            'host' => env('REDIS_HOST', '127.0.0.1'),
+            'password' => env('REDIS_PASSWORD', null),
+            'port' => env('REDIS_PORT', '6379'),
+            'database' => env('REDIS_CACHE_DB', '1'),
+            ],
+        ],
     ];
 }
 else
@@ -33,13 +89,9 @@ else
         | you may use many connections at once using the Database library.
         |
         */
-        
-        
-        
-            'default' => env('DB_CONNECTION', 'mysql'),
-        
-        
-
+    
+        'default' => env('DB_CONNECTION','my_sql'),
+    
         /*
         |--------------------------------------------------------------------------
         | Database Connections
@@ -55,10 +107,9 @@ else
         | choice installed on your machine before you begin development.
         |
         */
-
-        
+    
         'connections' => [
-
+    
             'sqlite' => [
                 'driver' => 'sqlite',
                 'url' => env('DATABASE_URL'),
@@ -66,7 +117,6 @@ else
                 'prefix' => '',
                 'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
             ],
-
             'mysql' => [
                 'driver' => 'mysql',
                 'url' => env('DATABASE_URL'),
@@ -86,7 +136,7 @@ else
                     PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
                 ]) : [],
             ],
-
+    
             'pgsql' => [
                 'driver' => 'pgsql',
                 'url' => env('DATABASE_URL'),
@@ -101,7 +151,7 @@ else
                 'schema' => 'public',
                 'sslmode' => 'prefer',
             ],
-
+    
             'sqlsrv' => [
                 'driver' => 'sqlsrv',
                 'url' => env('DATABASE_URL'),
@@ -114,9 +164,9 @@ else
                 'prefix' => '',
                 'prefix_indexes' => true,
             ],
-
+    
         ],
-
+    
         /*
         |--------------------------------------------------------------------------
         | Migration Repository Table
@@ -127,9 +177,9 @@ else
         | the migrations on disk haven't actually been run in the database.
         |
         */
-
+    
         'migrations' => 'migrations',
-
+    
         /*
         |--------------------------------------------------------------------------
         | Redis Databases
@@ -140,16 +190,16 @@ else
         | such as APC or Memcached. Laravel makes it easy to dig right in.
         |
         */
-
+    
         'redis' => [
-
+    
             'client' => env('REDIS_CLIENT', 'phpredis'),
-
+    
             'options' => [
                 'cluster' => env('REDIS_CLUSTER', 'redis'),
                 'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
             ],
-
+    
             'default' => [
                 'url' => env('REDIS_URL'),
                 'host' => env('REDIS_HOST', '127.0.0.1'),
@@ -157,7 +207,7 @@ else
                 'port' => env('REDIS_PORT', '6379'),
                 'database' => env('REDIS_DB', '0'),
             ],
-
+    
             'cache' => [
                 'url' => env('REDIS_URL'),
                 'host' => env('REDIS_HOST', '127.0.0.1'),
@@ -165,8 +215,8 @@ else
                 'port' => env('REDIS_PORT', '6379'),
                 'database' => env('REDIS_CACHE_DB', '1'),
             ],
-
+    
         ],
-
+    
     ];
 }
