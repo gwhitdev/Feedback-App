@@ -3,7 +3,7 @@
 use Illuminate\Support\Str;
 if(env('APP_ENV') == 'production')
 {
-    $databaseUrl = parse_url(getenv("CLEARDB_DATABASE_URL"));
+    $databaseUrl = parse_url(env("CLEARDB_DATABASE_URL"));
 
     return [
         'default' => env('DB_CONNECTION','clear_db'),
