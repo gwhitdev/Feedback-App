@@ -1,5 +1,5 @@
-<div @class(["bg-{$color} rounded-lg"])>
-    <div class="bg-white p-5 mt-2 grid grid-rows-1">
+<div @class(["bg-{$color} rounded-lg mt-3"])>
+    <div class="bg-white rounded-b-lg p-5 mt-2 grid grid-rows-1">
         <div class="row-start-1">
             <div class="flex items-center">
                 <div @class(["w-[8px] h-[8px] bg-{$color} rounded-full mr-3 float-left"])></div> 

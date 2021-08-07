@@ -5,7 +5,7 @@
         <div  class="col-span-1 ">
             <livewire:feedback.vote-button :key="$feedback->id" :feedback="$feedback"/>
         </div>
-        <div class="col-span-6"> 
+        <div class="col-span-6 ml-3 "> 
             <h2><a href="/feedback/{{$feedback->id}}"><b>{{ $feedback->title }}</b></a></h2>
             <p>{{ $feedback->detail }}</p>
             <livewire:generic.category-badge :key="$feedback->id" :category="$feedback->category->name" />
