@@ -3,11 +3,18 @@
 use Illuminate\Support\Str;
 if(env('APP_ENV') == 'production')
 {
+    $databaseUrl = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
     return [
         'default' => env('DB_CONNECTION','clear_db'),
         'connections' => [
             'clear_db' => [
-                'url' => env('CLEARDB_DATABASE_URL')
+                'url' => $databaseUrl,
+                'host' => $databaseUrl['host'],
+                'port' => 3306,
+                'database' => substr($url["path"], 1),
+                'username' => $databaseUrl['user'],
+                'password' => $databaseUrl['pass'],
             ]
         ]
     ];
