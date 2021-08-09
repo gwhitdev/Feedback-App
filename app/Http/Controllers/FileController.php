@@ -34,9 +34,8 @@ class FileController extends Controller
     }
     public function upload(Request $request)
     {
-        $myimage = Image::find(1);
-        $myimage = $myimage->image_url;
-        return view('file/index',compact('myimage'));
+        
+        return view('file/index');
     }
     
 }
