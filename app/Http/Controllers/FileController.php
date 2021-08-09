@@ -16,7 +16,7 @@ class FileController extends Controller
         {
             //dd($request);
             $request->validate([
-            'image' => 'required|mimes:jpg,png,jpeg|max:5048',
+            'image' => 'required|mimes:jpg,png,svg,jpeg|max:5048',
             ]);
             
             $path = $request->file('image')->store('images');
