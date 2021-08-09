@@ -29,7 +29,7 @@
                                         {{$i->image_url}}
                                     </td>
                                     <td>
-                                        <img src="{{asset("storage/$i->image_url")}}">
+                                        <img src="{{asset("$i->image_url")}}">
                                     </td>
                                 </tr>
                                 @endforeach
