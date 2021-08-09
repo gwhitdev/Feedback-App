@@ -6,6 +6,7 @@ use App\Http\Controllers\UtilsController;
 use App\Models\Feedback;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
+use App\Models\Image;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,8 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    $images = Image::all();
+    return view('dashboard',compact('images'));
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum','verified'])->group(function () {
@@ -47,5 +49,6 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
         $exitCode = Artisan::call('clear-compiled');
         return 'DONE'; 
       });
+    
 });
 

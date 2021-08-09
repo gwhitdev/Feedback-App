@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use App\Models\Image;
 
 class AppLayout extends Component
 {
@@ -11,8 +12,20 @@ class AppLayout extends Component
      *
      * @return \Illuminate\View\View
      */
+    public $myimages;
+    public $text;
+    
+    public function __construct()
+    {
+        $this->myimages = $this->getImages();
+        $this->text = 'Test';
+    }
+    public function getImages()
+    {
+        return Image::all();
+    }
     public function render()
     {
-        return view('layouts.app');
+        return view('layouts.app',['text'=>$this->text,'myimages'=>$this->myimages]);   
     }
 }
