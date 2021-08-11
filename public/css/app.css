@@ -1121,6 +1121,15 @@ select {
 .left-\[50px\] {
 	left: 50px;
 }
+.top-\[-26px\] {
+	top: -26px;
+}
+.top-\[-0px\] {
+	top: -0px;
+}
+.top-\[-20px\] {
+	top: -20px;
+}
 .z-0 {
 	z-index: 0;
 }

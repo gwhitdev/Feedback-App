@@ -1,5 +1,5 @@
 <div class="bg-white rounded-xl w-full mx-5">
-    <img src="{{asset('storage/images/shared/icon-new-feedback.svg')}}" class="relative top-[-25px] left-[50px]">
+    <img src='{{ Storage::disk('s3')->url('public/images/shared/icon-edit-feedback.svg') }}' class="relative top-[-20px] left-[50px]">
     <div class="grid grid-rows-7 pl-5 pr-5 pb-10 w-full ">
         <div class="row-start-1 row-span-1 ">
             <h1 class="font-bold text-xl">Editing '{{ $feedback->title }}'</h1>
