@@ -9,12 +9,12 @@
                 <x-menu>
                     <x-slot name="trigger">
                         <button>
-                            <img src="{{asset('storage/images/shared/mobile/icon-hamburger.svg')}}">
+                            <img src='{{ Storage::disk('s3')->url('public/images/shared/mobile/icon-hamburger.svg') }}'>
                         </button>
                     </x-slot>
                     <x-slot name="close">
                         <button>
-                            <img src="{{asset('storage/images/shared/mobile/icon-close.svg')}}">
+                            <img src='{{ Storage::disk('s3')->url('public/images/shared/mobile/icon-close.svg') }}'>
                         </button>
                     </x-slot>
                     <div class="absolute text-left right-0 z-50 w-1/2 h-full bg-gray-100 top-[72px]">

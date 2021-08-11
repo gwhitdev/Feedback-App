@@ -1,5 +1,5 @@
 <div class="bg-white rounded-xl w-full">
-    <img src="{{asset('storage/images/shared/icon-new-feedback.svg')}}" class="relative top-[-25px] left-[50px]">
+    <img src='{{ Storage::disk('s3')->url('public/images/shared/icon-new-feedback.svg') }}' class="relative top-[-25px] left-[50px]">
     <div class="grid grid-rows-7 pl-10 pr-10 pb-10 w-full">
         <div class="row-start-1 row-span-1 ">
             <h1 class="font-bold text-xl">Create New Feedback</h1>
@@ -13,7 +13,7 @@
                 <div class="row-span-1 row-start-2 mt-5">
                     <label class="font-bold" for="category">Category</label><br>
                     <span class="text-[10pt]">Choose a category for your feedback.</span>
-                    <select style="background-size: 1em; background-image: url({{asset('storage/images/shared/icon-arrow-down.svg')}})"class="w-3/4 md:w-full border-0 rounded-lg bg-gray-100" name="category_id" wire:model='category_id'>
+                    <select style="background-size: 1em; background-image: url({{ Storage::disk('s3')->url('public/images/shared/icon-arrow-down.svg')}}) class="w-3/4 md:w-full border-0 rounded-lg bg-gray-100" name="category_id" wire:model='category_id'>
                         @foreach($categories as $category)
                         <option value="{{$category['id']}}">{{ $category['name'] }}</option>
                         @endforeach

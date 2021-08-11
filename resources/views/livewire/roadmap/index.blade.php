@@ -4,7 +4,7 @@
             <div class="grid grid-cols-1 grid-rows-2 mt-2">
                 <div class="col-start-1 row-start-1">
                     <div class="row-start-1 row-span-2 align-center">
-                        <a href="/feedback" ><img class="float-left p-2" src="{{asset('storage/images/shared/icon-arrow-left.svg')}}"> <span class="ml-2">Go back</span></a>
+                        <a href="/feedback" ><img class="float-left p-2" src='{{ Storage::disk('s3')->url('public/images/shared/icon-arrow-left.svg') }}'> <span class="ml-2">Go back</span></a>
                     </div>
                 </div>
                 <div class="col-start-1 row-start-2 ml-2 mt-[-10px]">
