@@ -29,7 +29,8 @@
                                         {{$i->image_url}}
                                     </td>
                                     <td>
-                                        <img src="{{asset("storage/$i->image_url")}}">
+                                        <img src="{{ Storage::disk('s3')->temporaryUrl("$i->image_url",'+2 minutes')}}">
+                                        
                                     </td>
                                 </tr>
                                 @endforeach

@@ -24,8 +24,8 @@ module.exports = {
         },
         
         backgroundImage: theme => ({
-            'headerImage': "url('/storage/images/desktop/background-header.png')",
-            'empty-image': "url('/storage/images/desktop/illustration-empty.svg')",
+            'headerImage': "url('https://feedbackapp-gwhitdev.s3.eu-west-1.amazonaws.com/public/images/desktop/background-header.png')",
+            'empty-image': "url('https://feedbackapp-gwhitdev.s3.eu-west-1.amazonaws.com/public/images/desktop/illustration-empty.svg')",
           }),
         backgroundColor: theme => ({
             ...theme('colors'),

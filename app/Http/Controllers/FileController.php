@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Image;
 use Exception;
+use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
+    
     public function uploadImage(Request $request)
     {
         
@@ -19,7 +21,7 @@ class FileController extends Controller
             'image' => 'required|mimes:jpg,png,svg,jpeg|max:5048',
             ]);
             
-            $path = $request->file('image')->store('images');
+            $path = $request->file('image')->store('images','s3');
             Image::create([
             'user_id' => $request->user()->id,
             'description' => $request->input('description'),
