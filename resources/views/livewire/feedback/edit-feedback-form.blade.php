@@ -13,7 +13,7 @@
                 <div class="row-span-1 row-start-2 mt-5">
                     <label class="font-bold" for="category">Category</label><br>
                     <span class="text-[10pt]">Choose a category for your feedback.</span>
-                    <select style="background-size: 1em; background-image: url({{asset('storage/images/shared/icon-arrow-down.svg')}})"class="w-full border-0 rounded-lg bg-gray-100" name="category_id" wire:model='category_id'>
+                    <select style="background-size: 1em; background-image: url({{ Storage::disk('s3')->url('public/images/shared/icon-arrow-down.svg')}})"class="w-full border-0 rounded-lg bg-gray-100" name="category_id" wire:model='category_id'>
                         @foreach($categories as $category)
                         <option value="{{$category['id']}}">{{ $category['name'] }}</option>
                         @endforeach
@@ -23,7 +23,7 @@
                 <div class="row-span-1 row-start-3 mt-5">
                     <label class="font-bold" for="category">Update Status</label><br>
                     <span class="text-[10pt]">Change feature state.</span>
-                    <select style="background-size: 1em; background-image: url({{asset('storage/images/shared/icon-arrow-down.svg')}})"class="w-full border-0 rounded-lg bg-gray-100" name="status_id" wire:model='status_id'>
+                    <select style="background-size: 1em; background-image: url({{ Storage::disk('s3')->url('public/images/shared/icon-arrow-down.svg') }})"class="w-full border-0 rounded-lg bg-gray-100" name="status_id" wire:model='status_id'>
                         @foreach($status_list as $status)
                         <option value="{{$status['id']}}">{{ $status['status'] }}</option>
                         @endforeach
