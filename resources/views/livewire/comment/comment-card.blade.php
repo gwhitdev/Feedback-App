@@ -2,7 +2,7 @@
     <li id="comment" class="row-span-1 grid grid-cols-8 grid-rows-8 ">
         <div class="col-start-1 row-start-1 row-span-8 ">
             @if($users_list[$comment['user_id']]['photo'] != null)
-                <img src='{{ asset("storage/{$users_list[$comment['user_id']]['photo']}") }}' class=" w-[40px] h-[40px] justify-center mx-auto rounded-full">
+                <img src='{{ Storage::disk('s3')->url("{$users_list[$comment['user_id']]['photo']}") }}' class=" w-[40px] h-[40px] justify-center mx-auto rounded-full">
             @else
                 <div class="w-[40px] h-[40px] bg-purple-600 mx-auto rounded-full"></div>
             @endif
