@@ -27,7 +27,7 @@ switch ($width) {
 
 <div class="relative" x-data="{ open: false }" @click.away="open = false" @close.stop="open = false">
     <div @click="open = ! open">
-        {{ $trigger }} <div class="float-right mt-2 ml-1"><span x-show="open"><img src="{{ asset('storage/images/shared/icon-arrow-up.svg')}}"></span><span x-show="! open"><img src="{{ asset('storage/images/shared/icon-arrow-down-gray.svg')}}"></span></div>
+        {{ $trigger }} <div class="float-right mt-2 ml-1"><span x-show="open"><img src='{{ Storage::disk('s3')->url('public/images/shared/icon-arrow-up.svg') }}'></span><span x-show="! open"><img src='{{ Storage::disk('s3')->url('public/images/shared/icon-arrow-down-gray.svg') }}'></span></div>
     </div>
 
     <div x-show="open"
