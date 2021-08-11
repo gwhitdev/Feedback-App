@@ -26,7 +26,7 @@
                 
                     <div  class="col-span-1 row-span-2 mt-5">
                         @if($repliesUsersList[$reply['user_id']]['photo'] != null)
-                            <img class="w-[40px] h-[40px] mx-auto rounded-full"src="{{ asset("storage/{$repliesUsersList[$reply['user_id']]['photo']}")}}">
+                            <img class="w-[40px] h-[40px] mx-auto rounded-full"src="{{ Storage::disk('s3')->url({$repliesUsersList[$reply['user_id']]['photo']}")}})">
                         @else
                             <div class="w-[40px] h-[40px] mx-auto bg-purple-600 rounded-full"></div>
                         @endif
