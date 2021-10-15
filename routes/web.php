@@ -19,7 +19,7 @@ use App\Models\Image;
 |
 */
 
-Route::get('/', '/feedback');
+Route::redirect('/', '/feedback');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     $images = Image::all();
