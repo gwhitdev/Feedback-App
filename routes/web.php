@@ -28,8 +28,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard',compact('images'));
 })->name('dashboard');
 
+Route::get('/feedback', [FeedbackController::class, 'index']);
+
 Route::middleware(['auth:sanctum','verified'])->group(function () {
-    Route::get('/feedback', [FeedbackController::class, 'index']);
+
     Route::get('/feedback/new', [FeedbackController::class, 'new']);
     Route::get('/feedback/test',[FeedbackController::class, 'test']);
     Route::get('/feedback/{feedback_id}',[FeedbackController::class,'detail']);
@@ -40,15 +42,15 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
     Route::post('/upload/image',[FileController::class, 'uploadImage']);
     Route::get('/upload/image',[FileController::class, 'upload']);
     Route::get('/clear', function() {
-    
+
         $exitCode = Artisan::call('config:cache');
         $exitCode = Artisan::call('config:clear');
         $exitCode = Artisan::call('cache:clear');
         $exitCode = Artisan::call('view:clear');
         $exitCode = Artisan::call('route:clear');
         $exitCode = Artisan::call('clear-compiled');
-        return 'DONE'; 
+        return 'DONE';
       });
-    
+
 });
 
