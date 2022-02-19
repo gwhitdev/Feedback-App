@@ -27,16 +27,16 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/feedback', [FeedbackController::class, 'index']);
-
+Route::get('/roadmap',function() {
+    return view('roadmap/index');
+});
 Route::middleware(['auth:sanctum','verified'])->group(function () {
 
     Route::get('/feedback/new', [FeedbackController::class, 'new']);
     Route::get('/feedback/test',[FeedbackController::class, 'test']);
     Route::get('/feedback/{feedback_id}',[FeedbackController::class,'detail']);
     Route::get('/feedback/{feedback_id}/edit',[FeedbackController::class,'edit']);
-    Route::get('/roadmap',function() {
-        return view('roadmap/index');
-    });
+    
     Route::post('/upload/image',[FileController::class, 'uploadImage']);
     Route::get('/upload/image',[FileController::class, 'upload']);
     Route::get('/clear', function() {
